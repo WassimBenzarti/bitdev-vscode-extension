@@ -49,6 +49,11 @@
 				"command": "extension.bitList",
 				"title": "List components",
 				"category": "Bit"
+			},
+			{
+				"command": "extension.bitImport",
+				"title": "Import component",
+				"category": "Bit"
 			}
 		]
 	},
@@ -58,12 +63,14 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "yarn run compile",
 		"test": "node ./out/test/runTest.js",
-		"deploy":"vsce publish --yarn"
+		"deploy": "vsce publish --yarn"
 	},
 	"devDependencies": {
+		"@types/debounce": "^1.2.0",
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.11.7",
+		"@types/node-fetch": "^2.5.4",
 		"@types/vscode": "^1.41.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
@@ -71,5 +78,9 @@
 		"typescript": "^3.6.4",
 		"vsce": "^1.71.0",
 		"vscode-test": "^1.2.2"
+	},
+	"dependencies": {
+		"debounce": "^1.2.0",
+		"node-fetch": "^2.6.0"
 	}
 }
