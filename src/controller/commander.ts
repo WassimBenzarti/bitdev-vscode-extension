@@ -8,11 +8,8 @@ import CommandContext from "./CommandContext";
 export default function createCommands(ctx: ExtensionContext, commandsExec: any, ): Disposable[] {
 
     // Get terminal
-    let terminal: any = ctx.workspaceState.get("mainTerminal");
-    if (!terminal) {
-        terminal = window.createTerminal("Bit.dev");
-        ctx.workspaceState.update("mainTerminal", terminal);
-    }
+    // TODO: Maybe using name isn't a good idea, maybe use processId
+    let terminal:Terminal = window.terminals.find(terminal => terminal.name === "Bit.dev") ||  window.createTerminal("Bit.dev");
 
     function addArguments(fn: (arg: CommandContext) => any) {
         return () => {
