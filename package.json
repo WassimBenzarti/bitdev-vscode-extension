@@ -1,12 +1,14 @@
 {
 	"name": "bitdev",
 	"displayName": "Bitdev",
+	"publisher": "wassimbenzarti",
 	"description": "Making bit.dev commands easier with this unofficial extension",
 	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
 	"categories": [
+		"SCM Providers",
 		"Other"
 	],
 	"activationEvents": [
@@ -33,6 +35,11 @@
 			{
 				"command": "extension.bitAdd",
 				"title": "Add Component",
+				"category": "Bit"
+			},
+			{
+				"command": "extension.bitList",
+				"title": "List components",
 				"category": "Bit"
 			}
 		]

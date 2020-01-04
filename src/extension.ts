@@ -5,6 +5,7 @@ import setupBit from './commands/setupBit';
 import login from './commands/login';
 import createCommands from './controller/commander';
 import addComponent from './commands/addComponent';
+import listComponents from './commands/listComponents';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -27,7 +28,8 @@ export function activate(context: vscode.ExtensionContext) {
 		"extension.helloWorld": disposable,
 		"extension.bitSetup": setupBit,
 		"extension.bitLogin": login,
-		"extension.bitAdd": addComponent
+		"extension.bitAdd": addComponent,
+		"extension.bitList": listComponents
 	}
 	context.subscriptions.push(
 		...createCommands(context,commands)

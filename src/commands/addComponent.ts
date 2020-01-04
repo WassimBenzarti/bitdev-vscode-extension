@@ -15,7 +15,7 @@ export default async function addComponent({
         placeHolder: "Type the name of the component (lowercase)",
         value: namespace+"/"
     });
-
+    
     const relativeFilePath = path.relative(rootFolder.uri.fsPath, currentFile.uri.fsPath)
     const cmd = child_process.exec(
         `bit add ${relativeFilePath} --id ${componentId}`,
@@ -31,9 +31,7 @@ export default async function addComponent({
 
     cmd.stderr?.on("data", data => {
         console.log(data.toString());
-        vscode.window.showErrorMessage(data.toString(),{
-            modal:true,
-        });
+        vscode.window.showErrorMessage(data.toString());
     })
 
     //terminal.sendText("bit add ")
