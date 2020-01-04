@@ -5,7 +5,7 @@ on:
     branches: master
 
 jobs:
-  build:
+  publish:
 
     runs-on: ubuntu-latest
 
@@ -14,6 +14,6 @@ jobs:
     - name: Install dependencies
       run: yarn install
     - name: Run publish method
-      run: yarn deploy -p $(VSCODE_EXT_TOKEN)
+      run: yarn deploy -p $VSCODE_EXT_TOKEN
       env:
         VSCODE_EXT_TOKEN: ${{secrets.VSCODE_EXT_TOKEN}}
