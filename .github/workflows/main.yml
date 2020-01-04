@@ -1,0 +1,19 @@
+name: CI
+
+on: 
+  push:
+    branches: master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install dependencies
+      run: yarn install
+    - name: Run publish method
+      run: yarn deploy -p $(VSCODE_EXT_TOKEN)
+      env:
+        VSCODE_EXT_TOKEN: ${{secrets.VSCODE_EXT_TOKEN}}
