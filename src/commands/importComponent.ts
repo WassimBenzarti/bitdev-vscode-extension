@@ -1,25 +1,45 @@
 import search from "../utils/bit/search";
 import * as vscode from "vscode";
 import { debounce } from "debounce";
+import CommandContext from "../controller/CommandContext";
 
-export default function importComponent() {
+export default function importComponent({
+    executeCommand
+}: CommandContext) {
     const picker = vscode.window.createQuickPick()
-
-    const callback = debounce(async (value:string) => {
+    picker.matchOnDetail = true
+    const callback = debounce(async (value: string) => {
+        const [owner, collection, query] = value.match(/(?:\[([^.]*)\.?([^.]*)?\])?\s?(.*)/)?.slice(1) || [];
         const response = await vscode.window.withProgress({
             title: "Fetching components",
             location: 10
-        }, () => search(value));
+        }, () => search(query, collection ? owner + "." + collection : "", owner));
         const hits = response.payload.hits;
-        picker.items = hits.map(({ owner, scope, fullName }: any) => ({ label: fullName, description:owner.name+"/"+scope }))
+        picker.title = `${hits.length} components found`
+        picker.items = hits.map(({ size, owner, description, downloads, scope, fullName }: any) => ({
+            label: owner.name + "." + scope + "/" + fullName,
+            description: `$(arrow-down) ${downloads} | ${size.gzipped}KB`,
+            detail: `${description || ""}$(tag) ${(fullName + " " + owner.name + " " + scope).split(/[^a-z]/gi).join(" ")}`,
+            value: owner.name + "." + scope + "/" + fullName,
+            alwaysShow: true,
+        }))
+        picker.busy = false
     }, 1000)
 
     picker.onDidChangeValue(async (value) => {
-        if (!value) return;
+        if (!value) {
+            picker.busy = false
+            return;
+        };
+        picker.busy = true
         callback(value);
     })
     picker.show();
 
 
+    picker.onDidAccept(() => {
+        const { value }: any = picker.selectedItems[0];
+        executeCommand(`bit import ${value}`)
+    })
 
 }

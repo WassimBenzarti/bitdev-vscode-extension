@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export default function search(queryString: string) {
+export default function search(queryString: string,scope?:string, owner?:string) {
 
     return fetch("https://api.bit.dev/search/", {
         method: "POST",
@@ -9,6 +9,10 @@ export default function search(queryString: string) {
             "queryString": queryString,
             "results": {
                 "type": "component", "aggregatedBy": "none"
+            },
+            "context":{
+                ...(owner && {owners:[owner]}),
+                ...(scope && {collectionFullNames :[scope]})
             },
             "limit": 20, "offset": 0
         })

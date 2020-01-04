@@ -2,6 +2,7 @@ import { Disposable, commands, window, ExtensionContext, workspace, Terminal, Wo
 import * as vscode from "vscode";
 import { getCurrentFile, getRootFolder } from "../utils/resolver";
 import CommandContext from "./CommandContext";
+import createExecutor from "../utils/terminalCommand/createExecutor";
 
 
 
@@ -17,6 +18,7 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
                 terminal,
                 rootFolder: getRootFolder(),
                 currentFile: getCurrentFile(),
+                executeCommand: createExecutor(getRootFolder())
             });
         }
     }
