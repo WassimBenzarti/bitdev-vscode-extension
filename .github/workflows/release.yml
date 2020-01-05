@@ -17,5 +17,5 @@ jobs:
     - name: Action Release
       uses: yakuhzi/action-release@v1.2.0
       with:
-        file: bitdev-vscode-extension.vsix
+        file: bitdev.vsix
   
