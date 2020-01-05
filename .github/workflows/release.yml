@@ -19,5 +19,5 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       env:
         GHR_PATH: bitdev.vsix
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
   
