@@ -83,4 +83,4 @@ Bit: Login
 ```
 
 # Contribution
-Try to explore things yourself. We are wide open for enhancements and improvements.
+Try to explore things yourself. We are open for improvements.

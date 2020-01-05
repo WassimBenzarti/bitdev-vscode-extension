@@ -9,11 +9,16 @@ export default function importComponent({
     const picker = vscode.window.createQuickPick()
     picker.matchOnDetail = true
     const callback = debounce(async (value: string) => {
+
+        // Regex for the "[owner.scope] component-name" command
         const [owner, collection, query] = value.match(/(?:\[([^.]*)\.?([^.]*)?\])?\s?(.*)/)?.slice(1) || [];
+        
+        // Use progress API of VSCode
         const response = await vscode.window.withProgress({
             title: "Fetching components",
             location: 10
         }, () => search(query, collection ? owner + "." + collection : "", owner));
+
         const hits = response.payload.hits;
         picker.title = `${hits.length} components found`
         picker.items = hits.map(({ size, owner, description, downloads, scope, fullName }: any) => ({
@@ -34,12 +39,11 @@ export default function importComponent({
         picker.busy = true
         callback(value);
     })
-    picker.show();
-
 
     picker.onDidAccept(() => {
         const { value }: any = picker.selectedItems[0];
         executeCommand(`bit import ${value}`)
     })
 
+    picker.show();
 }

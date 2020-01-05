@@ -3,6 +3,7 @@ import * as vscode from "vscode";
 import { getCurrentFile, getRootFolder } from "../utils/resolver";
 import CommandContext from "./CommandContext";
 import createExecutor from "../utils/terminalCommand/createExecutor";
+import getBitmap, { createBitmapGetter } from "../utils/bit/getBitmap";
 
 
 
@@ -10,7 +11,7 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
 
     // Get terminal
     // TODO: Maybe using name isn't a good idea, maybe use processId
-    let terminal:Terminal = window.terminals.find(terminal => terminal.name === "Bit.dev") ||  window.createTerminal("Bit.dev");
+    let terminal: Terminal = window.terminals.find(terminal => terminal.name === "Bit.dev") || window.createTerminal("Bit.dev");
 
     function addArguments(fn: (arg: CommandContext) => any) {
         return () => {
@@ -18,7 +19,8 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
                 terminal,
                 rootFolder: getRootFolder(),
                 currentFile: getCurrentFile(),
-                executeCommand: createExecutor(getRootFolder())
+                executeCommand: createExecutor(getRootFolder()),
+                getBitmap: createBitmapGetter(getRootFolder())
             });
         }
     }
