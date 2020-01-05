@@ -39,11 +39,11 @@ Happy coding!
 
 ## Guide
 ### Commands
-1. Init bit project
+#### 1. Init bit project
 ```
 Bit: Setup
 ```
-2. List components
+#### 2. List components
 
 This command will help you find your component's files easily.
 ```
@@ -51,7 +51,7 @@ Bit: List components
 ```
 Once you run it, it will show you all the components of your project. Clicking on one of the components, will prompt the diffrent files of that component. Choose the file that you want to open.
 
-3. Add a component
+#### 3. Add a component
 
 Before running this command make sure:
 1. You isolated your component in a folder
@@ -61,7 +61,7 @@ Before running this command make sure:
 Bit: Add component
 ```
 
-4. Import a component
+#### 4. Import a component
 
 It's really easy to import a component, you just need to use this command
 
@@ -80,7 +80,7 @@ Example: if the **owner** is 'john', **scope** is 'react', **sub-collection** is
 [john.react] components/flex
 ```
 
-5. Login into bit.dev
+#### 5. Login into bit.dev
 ```
 Bit: Login
 ```
