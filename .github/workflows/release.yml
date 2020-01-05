@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Installing dependencies
+      run: yarn install
+    - name: Packaging
+      run: vsce package
+    - name: GH Release
+      uses: softprops/action-gh-release@v0.1.0
