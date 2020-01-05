@@ -14,6 +14,8 @@ jobs:
     - name: Packaging
       run: vsce package
     - run: ls
-    - name: GH Release
-      uses: softprops/action-gh-release@v0.1.0
+    - name: Action Release
+      uses: yakuhzi/action-release@v1.2.0
+      with:
+        file: bitdev-vscode-extension.vsix
   
