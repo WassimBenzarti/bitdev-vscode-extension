@@ -57,7 +57,30 @@ Before running this command make sure you are inside `index.js` file of your com
 ```
 Bit: Add component
 ```
-4. Login into bit.dev
+
+4. Import a component
+
+It's really easy to import a component, you just need to use this command
+
+```
+Bit: Import component
+```
+
+> Tip: if you want to specify the owner or the scope of the component use this syntax
+```
+[owner.scope] component-name
+```
+
+Example: if the **owner** is 'john', **scope** is 'react', **sub-collection** is 'components' and the **component name** is 'flex'
+
+```
+[john.react] components/flex
+```
+
+5. Login into bit.dev
 ```
 Bit: Login
 ```
+
+# Contribution
+Try to explore things yourself. We are wide open for enhancements and improvements.
