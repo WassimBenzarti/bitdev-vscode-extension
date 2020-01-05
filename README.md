@@ -53,7 +53,10 @@ Once you run it, it will show you all the components of your project. Clicking o
 
 3. Add a component
 
-Before running this command make sure you are inside `index.js` file of your component
+Before running this command make sure:
+1. You isolated your component in a folder
+2. You open one of the component files
+
 ```
 Bit: Add component
 ```
