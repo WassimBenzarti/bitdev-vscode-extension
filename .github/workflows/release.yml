@@ -1,4 +1,4 @@
-name: CI
+name: Package release
 
 on: [push]
 
@@ -13,5 +13,7 @@ jobs:
       run: yarn install
     - name: Packaging
       run: vsce package
+    - run: ls
     - name: GH Release
       uses: softprops/action-gh-release@v0.1.0
+  
