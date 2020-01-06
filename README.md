@@ -3,7 +3,7 @@
 
 > Notice: This is a unofficial extension made by Wassim Benzarti
 
-## This extension is still under development
+### :construction: This extension is still under development
 
 ## Getting started
 ### Step 0: Things to keep in mind
