@@ -7,6 +7,7 @@ import createCommands from './controller/commander';
 import addComponent from './commands/addComponent';
 import listComponents from './commands/listComponents';
 import importComponent from './commands/importComponent';
+import tagPublishComponent from './commands/tagPublishComponent';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -31,7 +32,8 @@ export function activate(context: vscode.ExtensionContext) {
 		"extension.bitLogin": login,
 		"extension.bitAdd": addComponent,
 		"extension.bitList": listComponents,
-		"extension.bitImport": importComponent
+		"extension.bitImport": importComponent,
+		"extension.bitTagPublish": tagPublishComponent
 	}
 	context.subscriptions.push(
 		...createCommands(context,commands)

@@ -6,5 +6,6 @@ export default interface CommandContext {
     rootFolder: WorkspaceFolder,
     currentFile: TextDocument,
     executeCommand: (cmd:string, options?:any)=>Promise<string>,
-    getBitmap: ()=>any
+    getBitmap: ()=>any,
+    getCurrentComponentBitmap: ()=>any,
 }

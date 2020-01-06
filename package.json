@@ -54,6 +54,11 @@
 				"command": "extension.bitImport",
 				"title": "Import component",
 				"category": "Bit"
+			},
+			{
+				"command": "extension.bitTagPublish",
+				"title": "Tag and publish component",
+				"category": "Bit"
 			}
 		]
 	},

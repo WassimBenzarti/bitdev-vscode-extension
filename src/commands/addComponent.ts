@@ -7,7 +7,6 @@ import toDashed from "../utils/toDashed";
 import getCommonNamespaces from "../utils/bit/getCommonNamespaces";
 
 export default async function addComponent({
-    terminal,
     rootFolder,
     currentFile,
     executeCommand,
@@ -21,8 +20,10 @@ export default async function addComponent({
     const commonNamespaces: any[] = getCommonNamespaces(getBitmap());
 
     const picker = window.createQuickPick();
+
     // Suggest the common namespaces
-    picker.items = commonNamespaces.map(ns => ({ label: ns, alwaysShow: true })) as any;
+    picker.items = [{ label: "", description: "create new namespace", alwaysShow: true } as vscode.QuickPickItem]
+        .concat(commonNamespaces.map(ns => ({ label: ns, alwaysShow: true })));
     picker.onDidChangeValue(value => {
         // Show an item for the new namespace
         picker.items = [{ label: value, description: "create new namespace", alwaysShow: true }]
