@@ -3,7 +3,7 @@ import CommandContext from "../controller/CommandContext";
 import { ComponentNotFound } from "../utils/bit/getCurrentComponentBitmap";
 
 
-export default function tagPublishComponent({
+export default async function tagPublishComponent({
     getCurrentComponentBitmap,
     executeCommand
 }: CommandContext) {
@@ -14,8 +14,14 @@ export default function tagPublishComponent({
             `bit tag ${name}`
         )
 
+        const scope = await vscode.window.showInputBox({
+            prompt:"Type the scope"
+        })
+
         // TODO: Publish component
-        
+        executeCommand(
+            `bit export ${scope}`
+        )
 
     } catch (e) {
         if (e instanceof ComponentNotFound) {
