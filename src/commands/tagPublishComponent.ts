@@ -10,7 +10,7 @@ export default async function tagPublishComponent({
     try {
         const [name, component] = getCurrentComponentBitmap();
 
-        executeCommand(
+        await executeCommand(
             `bit tag ${name}`
         )
 
@@ -19,7 +19,7 @@ export default async function tagPublishComponent({
         })
 
         // TODO: Publish component
-        executeCommand(
+        await executeCommand(
             `bit export ${scope}`
         )
 
@@ -27,6 +27,7 @@ export default async function tagPublishComponent({
         if (e instanceof ComponentNotFound) {
             vscode.window.showWarningMessage("This is not a component, please open a file of the component first.")
         }
+        throw e;
     }
 }
 

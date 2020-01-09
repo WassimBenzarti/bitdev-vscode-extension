@@ -22,16 +22,38 @@ const component: any = [
 
 suite("should tag and publish", () => {
 
-    test("successfully", () => {
+    test("successfully", async () => {
         // Mock the showInputBox
-        (vscode.window.showInputBox as any) = () => "bmw.my"
+        (vscode.window.showInputBox as any) = () => "example.my"
 
-        tagPublishComponent(
+        const commands = [
+            component[0], // Component name
+            "example.my"
+        ];
+
+        await tagPublishComponent(
             {
                 getCurrentComponentBitmap: () => component,
                 executeCommand: (cmd: string) => {
-                    //assert.ok(cmd.match(component[0]), "Exact name")
-                    console.log(cmd)
+                    assert.ok(cmd.match(commands.shift()) as any);
+                }
+            } as any
+        )
+    })
+
+    test("wrong component name", async () => {
+        // Mock the showInputBox
+        (vscode.window.showInputBox as any) = () => "example.my"
+
+        const commands = [
+            "wrong-name", // Component name
+            "wrong-example.my"
+        ];
+        await tagPublishComponent(
+            {
+                getCurrentComponentBitmap: () => component,
+                executeCommand: (cmd: string) => {
+                    assert.equal(cmd.match(commands.shift() as any) as any, null)
                 }
             } as any
         )
