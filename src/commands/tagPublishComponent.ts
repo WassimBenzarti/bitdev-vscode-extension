@@ -35,14 +35,12 @@ export default async function tagPublishComponent({
             )
             switch(action){
                 case "Create collection":
-                    //vscode.env.openExternal();
                     vscode.env.openExternal(vscode.Uri.parse("https://bit.dev/~create-collection"));
                 break;
                 case "Create organization":
                     vscode.env.openExternal(vscode.Uri.parse("https://bit.dev/~create-org"));
                 break;
             }
-            action
         }
         vscode.window.showErrorMessage(e.message);
         throw e;
