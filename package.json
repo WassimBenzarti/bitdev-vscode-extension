@@ -24,6 +24,23 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"views": {
+			"bit-components": [
+				{
+					"id": "bitComponents",
+					"name": "Bit Components"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "bit-components",
+					"title": "Bit Explorer",
+					"icon": "media/activity-bar-logo.png"
+				}
+			]
+		},
 		"commands": [
 			{
 				"command": "extension.helloWorld",

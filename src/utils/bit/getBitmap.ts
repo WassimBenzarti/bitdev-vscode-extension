@@ -2,9 +2,12 @@ import * as path from "path"
 import * as fs from "fs";
 import { WorkspaceFolder } from "vscode";
 
+export function getBitmapPath(rootFolder: WorkspaceFolder) {
+    return path.resolve(rootFolder.uri.fsPath, ".bitmap");
+}
 
 export default function getBitmap(rootFolder: WorkspaceFolder) {
-    const bitMapFilePath = path.resolve(rootFolder.uri.fsPath, ".bitmap");
+    const bitMapFilePath = getBitmapPath(rootFolder);
 
     const bitMap = fs.readFileSync(bitMapFilePath);
 
@@ -13,4 +16,4 @@ export default function getBitmap(rootFolder: WorkspaceFolder) {
     return components;
 }
 
-export const createBitmapGetter = (rootFolder:WorkspaceFolder)=>()=>getBitmap(rootFolder);
+export const createBitmapGetter = (rootFolder: WorkspaceFolder) => () => getBitmap(rootFolder);
