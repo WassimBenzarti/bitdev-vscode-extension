@@ -16,7 +16,7 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
 
     function addArguments(fn: (arg: CommandContext) => any) {
         return () => {
-            const getBitmap = createBitmapGetter(getRootFolder())
+            const getBitmap = createBitmapGetter(getRootFolder());
             return fn({
                 terminal,
                 rootFolder: getRootFolder(),
@@ -25,7 +25,7 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
                 getBitmap,
                 getCurrentComponentBitmap: createComponentGetter(getCurrentFile, getRootFolder, getBitmap),
             });
-        }
+        };
     }
 
     return Object.entries<Function>(commandsExec)

@@ -44,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 		"extension.bitList": listComponents,
 		"extension.bitImport": importComponent,
 		"extension.bitTagPublish": tagPublishComponent
-	}
+	};
 
 	context.subscriptions.push(
 		...createCommands(context, commands)
