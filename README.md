@@ -1,5 +1,5 @@
 # Bitdev
-### Components easily managed with VSCode
+### Components easily managed with vscode
 
 > Notice: This is a unofficial extension made by Wassim Benzarti
 
