@@ -1,5 +1,6 @@
 # Bitdev
 ### Components easily managed with vscode
+[![CircleCI](https://circleci.com/gh/WassimBenzarti/bitdev-vscode-extension/tree/master.svg?style=svg)](https://circleci.com/gh/WassimBenzarti/bitdev-vscode-extension/tree/master)
 
 > Notice: This is a unofficial extension made by Wassim Benzarti
 
