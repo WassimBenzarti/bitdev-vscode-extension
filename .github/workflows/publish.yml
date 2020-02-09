@@ -1,9 +1,9 @@
 name: CI
 
-on: 
-  push:
-    branches: master
-  pull_request:
+on:
+  create:
+    tags:
+      - v*
 
 jobs:
   publish:
@@ -16,6 +16,5 @@ jobs:
       run: yarn install
     - name: Run publish method
       run: yarn deploy -p $VSCODE_EXT_TOKEN
-      continue-on-error: true
       env:
         VSCODE_EXT_TOKEN: ${{secrets.VSCODE_EXT_TOKEN}}
