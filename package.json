@@ -80,7 +80,8 @@
 			},
 			{
 				"command": "bitdev.bitUntrack",
-				"title": "Untrack a component"
+				"title": "Untrack a component",
+				"category": "Bit"
 			}
 		],
 		"menus": {

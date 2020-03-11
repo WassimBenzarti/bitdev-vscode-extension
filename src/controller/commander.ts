@@ -14,8 +14,8 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
     // TODO: Maybe using name isn't a good idea, maybe use processId
     let terminal: Terminal = window.terminals.find(terminal => terminal.name === "Bit.dev") || window.createTerminal("Bit.dev");
 
-    function addArguments(fn: (arg: CommandContext) => any) {
-        return () => {
+    function addArguments(fn: (arg: CommandContext, ...args:any[]) => any) {
+        return (...args:any[]) => {
             const getBitmap = createBitmapGetter(getRootFolder());
             return fn({
                 terminal,
@@ -24,7 +24,7 @@ export default function createCommands(ctx: ExtensionContext, commandsExec: any,
                 executeCommand: createExecutor(getRootFolder()),
                 getBitmap,
                 getCurrentComponentBitmap: createComponentGetter(getCurrentFile, getRootFolder, getBitmap),
-            });
+            }, ...args);
         };
     }
 
