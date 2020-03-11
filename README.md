@@ -85,5 +85,9 @@ Example: if the **owner** is 'john', **scope** is 'react', **sub-collection** is
 Bit: Login
 ```
 
+# TODO
+- [ ] Untrack a component (context menu)
+
+
 # Contribution
 Try to explore things yourself. We are open for improvements.

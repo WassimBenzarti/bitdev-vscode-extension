@@ -13,13 +13,17 @@ export default class BitComponentsProvider implements vscode.TreeDataProvider<It
 
     onDidChangeTreeData?: vscode.Event<Item | null | undefined> | undefined = this._changeEvent.event;
 
+    refresh(){
+        this._changeEvent.fire();
+    }
 
     getTreeItem(element: Item): vscode.TreeItem | Thenable<vscode.TreeItem> {
+        /*
         const treeItem = new vscode.TreeItem(element.name,
             element instanceof Scope
                 ? vscode.TreeItemCollapsibleState.Expanded
-                : vscode.TreeItemCollapsibleState.None);
-        return treeItem;
+                : vscode.TreeItemCollapsibleState.None);*/
+        return element;
     }
 
     getChildren(element?: Scope): vscode.ProviderResult<Item[]> {
@@ -53,16 +57,23 @@ export default class BitComponentsProvider implements vscode.TreeDataProvider<It
     }
 
     _getScopes(): Item[] {
+        // Remove the version attribute and create Component instances
         const components = Object.entries(this.getBitmap())
             .filter(([key, _]) => key !== "version")
-            .map(([key, component]) => new Component(key, component))
+            .map(([key, component]) => new Component(key, component));
+
+        // 
         const scopes: any = components.reduce((result: any, next: Component) => {
-            if (!result[next.organization]) result[next.organization] = {}
+            if (!result[next.organization]) {
+                result[next.organization] = {}
+            }
             const organization = result[next.organization];
-            if (!organization[next.collection]) organization[next.collection] = []
+            if (!organization[next.collection]) {
+                organization[next.collection] = []
+            }
             organization[next.collection].push(next);
             return result;
-        }, {})
+        }, {});
         const items: any[] = Object.entries(scopes).reduce((result, [scopeName, scope]: any) => {
             const children: Item[] = Object.entries(scope).map(([collectionName, collection]: any) => {
                 return new Scope(collectionName, collection)

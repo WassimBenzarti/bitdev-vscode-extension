@@ -11,16 +11,18 @@ import tagPublishComponent from './commands/tagPublishComponent';
 import BitComponentsProvider from './providers/BitComponentsProvider/BitComponentsProvider';
 import getBitmap, { getBitmapPath } from './utils/bit/getBitmap';
 import { getRootFolder } from './utils/resolver';
+import { untrackComponent } from './commands/untrackComponent';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
+	const bitComponentsProvider = new BitComponentsProvider(
+		getBitmapPath(getRootFolder()),
+		() => getBitmap(getRootFolder())
+	);
 	vscode.window.registerTreeDataProvider('bitComponents',
-		new BitComponentsProvider(
-			getBitmapPath(getRootFolder()),
-			() => getBitmap(getRootFolder())
-		)
+		bitComponentsProvider
 	);
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -37,13 +39,14 @@ export function activate(context: vscode.ExtensionContext) {
 	};
 
 	const commands: { [key: string]: Function } = {
-		"extension.helloWorld": disposable,
-		"extension.bitSetup": setupBit,
-		"extension.bitLogin": login,
-		"extension.bitAdd": addComponent,
-		"extension.bitList": listComponents,
-		"extension.bitImport": importComponent,
-		"extension.bitTagPublish": tagPublishComponent
+		"bitdev.bitSetup": setupBit,
+		"bitdev.bitLogin": login,
+		"bitdev.bitAdd": addComponent,
+		"bitdev.bitRefresh": bitComponentsProvider.refresh.bind(bitComponentsProvider),
+		"bitdev.bitList": listComponents,
+		"bitdev.bitImport": importComponent,
+		"bitdev.bitTagPublish": tagPublishComponent,
+		"bitdev.bitUntrack": untrackComponent
 	};
 
 	context.subscriptions.push(

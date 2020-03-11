@@ -43,41 +43,61 @@
 		},
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World",
-				"category": "Bit"
-			},
-			{
-				"command": "extension.bitSetup",
+				"command": "bitdev.bitSetup",
 				"title": "Setup",
 				"category": "Bit"
 			},
 			{
-				"command": "extension.bitLogin",
+				"command": "bitdev.bitLogin",
 				"title": "Login",
 				"category": "Bit"
 			},
 			{
-				"command": "extension.bitAdd",
+				"command": "bitdev.bitAdd",
 				"title": "Add Component",
 				"category": "Bit"
 			},
 			{
-				"command": "extension.bitList",
+				"command": "bitdev.bitList",
 				"title": "List components",
 				"category": "Bit"
 			},
 			{
-				"command": "extension.bitImport",
+				"command": "bitdev.bitRefresh",
+				"title": "Refresh components",
+				"category": "Bit",
+				"icon":"$(refresh~spin)"
+			},
+			{
+				"command": "bitdev.bitImport",
 				"title": "Import component",
 				"category": "Bit"
 			},
 			{
-				"command": "extension.bitTagPublish",
+				"command": "bitdev.bitTagPublish",
 				"title": "Tag and publish component",
 				"category": "Bit"
+			},
+			{
+				"command": "bitdev.bitUntrack",
+				"title": "Untrack a component"
 			}
-		]
+		],
+		"menus": {
+			"view/title": [
+			  {
+				"command": "bitdev.bitRefresh",
+				"when": "view == bitComponents",
+				"group": "navigation"
+			  }
+			],
+			"view/item/context": [
+				{
+				  "command": "bitdev.bitUntrack",
+				  "when": "view == bitComponents && viewItem == component"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",

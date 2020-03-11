@@ -7,7 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 
 ## [Unreleased]
-
+- Added refresh button at the top
 
 ## [0.3.5] - 2020-01-12
 

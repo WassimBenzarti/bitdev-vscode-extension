@@ -4,7 +4,7 @@ import Item from "./Item";
 
 
 export default class Component extends Item{
-
+    contextValue = "component"
     constructor(
         public key: string,
         public component: any,
