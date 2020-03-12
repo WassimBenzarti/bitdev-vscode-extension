@@ -1,7 +1,10 @@
 # Bitdev
-
 ### Components easily managed with vscode
-[![CircleCI](https://circleci.com/gh/WassimBenzarti/bitdev-vscode-extension/tree/master.svg?style=svg)](https://circleci.com/gh/WassimBenzarti/bitdev-vscode-extension/tree/master)
+
+**Stable branch**
+![Package release on github](https://github.com/WassimBenzarti/bitdev-vscode-extension/workflows/Package%20release/badge.svg?branch=stable)
+![Extension release on VSCode](https://github.com/WassimBenzarti/bitdev-vscode-extension/workflows/CI/badge.svg?branch=stable)
+
 
 ### :construction: This extension is still under development
 
