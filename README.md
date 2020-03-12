@@ -2,6 +2,7 @@
 ### Components easily managed with vscode
 
 **Stable branch**
+
 ![Package release on github](https://github.com/WassimBenzarti/bitdev-vscode-extension/workflows/Package%20release/badge.svg?branch=stable)
 ![Extension release on VSCode](https://github.com/WassimBenzarti/bitdev-vscode-extension/workflows/CI/badge.svg?branch=stable)
 
