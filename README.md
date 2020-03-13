@@ -84,7 +84,11 @@ Bit: Login
 ```
 
 # TODO
-- [ ] Untrack a component (context menu)
+- [x] Untrack a component (context menu)
+- [ ] Publish all components button
+- [ ] Tag all components button
+- [ ] Tag component (context menu)
+
 
 
 # Contribution
