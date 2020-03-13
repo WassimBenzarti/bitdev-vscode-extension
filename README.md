@@ -1,9 +1,6 @@
 # Bitdev
 ### Components easily managed with vscode
 
-**Stable branch**
-
-
 ### :construction: This extension is still under development
 
 ## Getting started
