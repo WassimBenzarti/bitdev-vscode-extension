@@ -12,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      with:
+        ref: stable
     - name: Installing dependencies
       run: yarn install
     - name: Packaging
