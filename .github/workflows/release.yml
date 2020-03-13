@@ -1,8 +1,9 @@
 name: Package release on github
 
-on: 
-  push:
-    branches: [stable]
+on:
+  create:
+    tags:
+      - v*
 
 jobs:
   build:
