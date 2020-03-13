@@ -1,9 +1,8 @@
 name: Publish on VScode marketplace
 
 on:
-  create:
-    tags:
-      - v*
+  release:
+    types: [published]
 
 jobs:
   publish:
