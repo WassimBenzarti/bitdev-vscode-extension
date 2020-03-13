@@ -1,5 +1,6 @@
 import * as vscode from "vscode"
 import Component from "./Component";
+import {default as BitComponent} from "../../utils/bit/Component"
 import Scope from "./Scope";
 import Item from "./Item";
 
@@ -32,7 +33,7 @@ export default class BitComponentsProvider implements vscode.TreeDataProvider<It
 
     _getScopes(): Item[] {
         // Remove the version attribute and create Component instances
-        const components = Object.entries(this.getBitmap())
+        const components = Object.entries<BitComponent>(this.getBitmap())
             .filter(([key, _]) => key !== "version")
             .map(([key, component]) => new Component(key, component));
 

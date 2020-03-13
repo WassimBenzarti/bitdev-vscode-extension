@@ -12,6 +12,7 @@ import BitComponentsProvider from './providers/BitComponentsProvider/BitComponen
 import getBitmap, { getBitmapPath } from './utils/bit/getBitmap';
 import { getRootFolder } from './utils/resolver';
 import { untrackComponent } from './commands/untrackComponent';
+import { openComponent } from './commands/openComponent';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -46,7 +47,8 @@ export function activate(context: vscode.ExtensionContext) {
 		"bitdev.bitList": listComponents,
 		"bitdev.bitImport": importComponent,
 		"bitdev.bitTagPublish": tagPublishComponent,
-		"bitdev.bitUntrack": untrackComponent
+		"bitdev.bitUntrack": untrackComponent,
+		"bitdev.openComponent": openComponent,
 	};
 
 	context.subscriptions.push(

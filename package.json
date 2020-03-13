@@ -66,7 +66,7 @@
 				"command": "bitdev.bitRefresh",
 				"title": "Refresh components",
 				"category": "Bit",
-				"icon":"$(refresh~spin)"
+				"icon": "$(refresh~spin)"
 			},
 			{
 				"command": "bitdev.bitImport",
@@ -80,22 +80,48 @@
 			},
 			{
 				"command": "bitdev.bitUntrack",
-				"title": "Untrack a component",
+				"title": "Untrack component",
 				"category": "Bit"
+			},
+			{
+				"command": "bitdev.publishAll",
+				"title": "Publish all components",
+				"category": "Bit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "bitdev.tagAll",
+				"title": "Tag all components",
+				"category": "Bit",
+				"icon": "$(tag)"
 			}
 		],
 		"menus": {
 			"view/title": [
-			  {
-				"command": "bitdev.bitRefresh",
-				"when": "view == bitComponents",
-				"group": "navigation"
-			  }
+				{
+					"command": "bitdev.publishAll",
+					"when": "view == bitComponents",
+					"group": "navigation"
+				},
+				{
+					"command": "bitdev.tagAll",
+					"when": "view == bitComponents",
+					"group": "navigation"
+				},
+				{
+					"command": "bitdev.bitRefresh",
+					"when": "view == bitComponents",
+					"group": "navigation"
+				}
 			],
 			"view/item/context": [
 				{
-				  "command": "bitdev.bitUntrack",
-				  "when": "view == bitComponents && viewItem == component"
+					"command": "bitdev.bitUntrack",
+					"when": "view == bitComponents && viewItem == component"
+				},
+				{
+					"command": "bitdev.bitTagPublish",
+					"when": "view == bitComponents && viewItem == component"
 				}
 			]
 		}

@@ -21,10 +21,9 @@ export async function untrackComponent({executeCommand, getCurrentComponentBitma
             }
         }
     }else{
-        nameAndComponent = [componentItem.name, componentItem.component];
+        nameAndComponent = [componentItem.key, componentItem.component];
     }
-
-
+    
     const [name, component] = nameAndComponent;
     /**
      * TODO: Currently showing the success/error messages as is, because bit CLI doesn't raise an error
